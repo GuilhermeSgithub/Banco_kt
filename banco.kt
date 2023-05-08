@@ -1,9 +1,10 @@
 data class Cliente(val nome: String, val senha: String, var saldo: Double)
 
+var saldoLogado:Double= 0.00
 
 val listaClientes = mutableListOf<Cliente>()
 
-fun login(): Boolean {
+fun login(saldoAtual: Double= 0.00): Boolean {
     println("digite seu login")
     val nomeLogin = readlnOrNull()
     println("digite sua senha")
@@ -11,6 +12,7 @@ fun login(): Boolean {
 
     for (usuario in listaClientes) {
         if (usuario.nome == nomeLogin && usuario.senha == senhaLogin) {
+            saldoLogado = saldoAtual + usuario.saldo
             return true
         }
     }
@@ -26,11 +28,11 @@ fun main() {
         var logado = login()
 
         if (logado == true) {
-            print("Ola bem vindo ao Banco Moruga")
+            println("Ola bem vindo ao Banco Moruga")
             break
         } else {
             println("Usuario não encontrado tente-novamente")
         }
     }
-//teste
+
 }
