@@ -49,12 +49,17 @@ fun main() {
         if (opçao == "1") {
             println("quanto quer sacar ?")
             var valor = readlnOrNull()?.toInt()
-            saldoLogado = saldoLogado - valor!!
-            println("Contando notas ")
-            println("Retire seu dinheiro abaixo")
-            extratoSaque.add(valor.toString())
-            println("voltando ao menu")
-            true
+            if (saldoLogado <= valor!!) {
+                println("saldo insuficiente para saque")
+                println("voltando ao menu")
+            } else {
+                saldoLogado = saldoLogado - valor!!
+                println("Contando notas ")
+                println("Retire seu dinheiro abaixo")
+                extratoSaque.add(valor.toString())
+                println("voltando ao menu")
+                true
+            }
         } else if (opçao == "2") {
             println("quanto quer depositar ?")
             var valor = readlnOrNull()?.toInt()
